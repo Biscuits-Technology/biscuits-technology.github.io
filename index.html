@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biscuits Technology LLC</title>
+  <style>
+    :root {
+      --brown-dark:  #2B1500;
+      --brown-mid:   #4A2200;
+      --orange:      #E8860A;
+      --orange-light:#F5A623;
+      --tan:         #FDF3E3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A0A00;
+      --text-muted:  #6B4226;
+      --border:      #D4B896;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--brown-dark);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    nav .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-wrap {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    nav .nav-brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    nav .nav-brand span { color: var(--orange-light); }
+
+    nav a.nav-cta {
+      background: var(--orange);
+      color: var(--white);
+      padding: 8px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    nav a.nav-cta:hover { background: var(--orange-light); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-mid) 60%, #6B3400 100%);
+      color: var(--white);
+      padding: 80px 2rem 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(232,134,10,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      background: var(--white);
+      border-radius: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+      padding: 12px;
+    }
+
+    .hero-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .hero h1 span { color: var(--orange-light); }
+
+    .hero p.tagline {
+      margin: 18px auto 0;
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 14px rgba(232,134,10,0.4);
+    }
+
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--orange-light);
+      background: rgba(232,134,10,0.12);
+    }
+
+    /* ── APPS CATALOG ── */
+    .apps-section {
+      background: var(--tan);
+      padding: 80px 2rem;
+    }
+
+    .apps-section .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .apps-section h2.section-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+      margin-bottom: 8px;
+    }
+
+    .apps-section p.section-sub {
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+
+    /* App card row — horizontal scrollable list of app selector cards */
+    .app-selector {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .app-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+      min-width: 220px;
+      user-select: none;
+    }
+
+    .app-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 16px rgba(232,134,10,0.15);
+      transform: translateY(-2px);
+    }
+
+    .app-card.active {
+      border-color: var(--orange);
+      background: #FFF8EE;
+      box-shadow: 0 4px 20px rgba(232,134,10,0.2);
+    }
+
+    .app-card-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--brown-dark);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .app-card-info { flex: 1; }
+
+    .app-card-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--brown-dark);
+      line-height: 1.2;
+    }
+
+    .app-card-platform {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-top: 2px;
+    }
+
+    .app-card-chevron {
+      font-size: 0.8rem;
+      color: var(--border);
+      transition: color 0.2s;
+    }
+
+    .app-card.active .app-card-chevron { color: var(--orange); }
+
+    /* ── APP DETAIL PANEL ── */
+    .app-detail {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      animation: slideDown 0.2s ease;
+    }
+
+    .app-detail.visible { display: block; }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .detail-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--brown-dark);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      flex-shrink: 0;
+    }
+
+    .detail-info h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .detail-info p {
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 0.97rem;
+      max-width: 520px;
+    }
+
+    .detail-actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-store {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brown-dark);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .btn-store:hover { background: var(--brown-mid); }
+
+    /* ── FEATURES GRID ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: var(--tan);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 18px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 4px 14px rgba(43,21,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon { font-size: 1.6rem; margin-bottom: 10px; }
+
+    .feature-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 4px;
+    }
+
+    .feature-card p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── PRIVACY STRIP ── */
+    .privacy-strip {
+      background: var(--brown-dark);
+      color: var(--white);
+      padding: 48px 2rem;
+      text-align: center;
+    }
+
+    .privacy-strip h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .privacy-strip h2 span { color: var(--orange-light); }
+
+    .privacy-strip p {
+      color: rgba(255,255,255,0.75);
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    .privacy-icons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .privacy-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .privacy-item .icon { font-size: 2rem; }
+
+    .privacy-item span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── DOWNLOAD SECTION ── */
+    .download-section {
+      padding: 80px 2rem;
+      text-align: center;
+      background: var(--white);
+    }
+
+    .download-section h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+      margin-bottom: 10px;
+    }
+
+    .download-section p {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--brown-dark);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .store-btn:hover { background: var(--brown-mid); transform: translateY(-2px); }
+
+    .store-btn .store-text-small { font-size: 0.7rem; opacity: 0.8; display: block; }
+    .store-btn .store-text-big  { font-size: 1.1rem; font-weight: 700; display: block; }
+    .store-btn .store-icon      { font-size: 2rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown-dark);
+      color: rgba(255,255,255,0.55);
+      padding: 32px 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer strong { color: var(--orange-light); }
+
+    footer .footer-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    footer .footer-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer .footer-links a:hover { color: var(--orange-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero-cta-row { flex-direction: column; align-items: center; }
+      .detail-header { flex-direction: column; }
+      .app-detail { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-wrap">
+        <img src="logo.png" alt="Biscuits Technology logo" />
+      </div>
+      <span class="nav-brand">Biscuits <span>Technology</span></span>
+    </a>
+    <a href="#apps" class="nav-cta">Our Apps</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-logo-wrap">
+        <img src="logo.png" alt="Biscuits Technology" class="hero-logo" />
+      </div>
+      <h1>Smart Apps.<br><span>Simple Lives.</span></h1>
+      <p class="tagline">We build lightweight, privacy-first mobile apps that work for you — no accounts, no subscriptions, no nonsense.</p>
+      <div class="hero-cta-row">
+        <a href="#apps" class="btn-primary">&#x2193; See Our Apps</a>
+        <a href="#download" class="btn-secondary">&#x1F4E5; Download Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPS CATALOG -->
+  <section class="apps-section" id="apps">
+    <div class="section-inner">
+      <h2 class="section-title">Our Apps</h2>
+      <p class="section-sub">Click an app to see what it does.</p>
+
+      <!-- App selector cards -->
+      <div class="app-selector">
+
+        <div class="app-card active" data-app="budget-ledger" onclick="selectApp(this)">
+          <div class="app-card-icon">&#x1F4B0;</div>
+          <div class="app-card-info">
+            <div class="app-card-name">Budget Ledger Lite</div>
+            <div class="app-card-platform">Android</div>
+          </div>
+          <span class="app-card-chevron">&#x25BC;</span>
+        </div>
+
+        <!-- Add more app cards here as you release more apps -->
+
+      </div>
+
+      <!-- Detail panels (one per app) -->
+      <div class="app-detail visible" id="detail-budget-ledger">
+        <div class="detail-header">
+          <div class="detail-icon">&#x1F4B0;</div>
+          <div class="detail-info">
+            <h3>Budget Ledger Lite <span class="badge">Android</span></h3>
+            <p>A local-first personal finance tracker that keeps your money — and your data — exactly where it belongs: on your device.</p>
+            <div class="detail-actions">
+              <a href="#" class="btn-store">&#x25B6; Google Play</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F512;</div>
+            <h4>No Signup Required</h4>
+            <p>Zero friction — install and start logging. No email, no account, no password reset emails ever.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F4F1;</div>
+            <h4>Stays on Your Device</h4>
+            <p>All data lives locally. No server, no cloud sync, no one else can see your financial life.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F4C5;</div>
+            <h4>Calendar View</h4>
+            <p>Tap any day on the interactive month grid to view transactions and add new ones at a glance.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F4BC;</div>
+            <h4>Multiple Accounts</h4>
+            <p>Track Personal, Business, Savings, or custom accounts — each color-coded and separated cleanly.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F501;</div>
+            <h4>Recurring Transactions</h4>
+            <p>Set up bills and income on daily, weekly, bi-weekly, monthly, or yearly schedules. Edit one or all instances.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F50D;</div>
+            <h4>Smart Search</h4>
+            <p>Full-text search across all your transactions and accounts instantly — no loading, no server calls.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F514;</div>
+            <h4>Balance Alerts</h4>
+            <p>Get a push notification the moment an account balance drops below your custom threshold.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F91E;</div>
+            <h4>App Lock</h4>
+            <p>Protect your data with a PIN or biometric (fingerprint / face unlock) with a configurable timeout.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F4CA;</div>
+            <h4>Monthly Summary</h4>
+            <p>At-a-glance income, expenses, and net balance per account — know exactly where you stand each month.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F4BE;</div>
+            <h4>Backup &amp; Restore</h4>
+            <p>Export your data as JSON anytime, and restore it just as easily. Optional daily auto-backup included.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F311;</div>
+            <h4>Dark &amp; Light Themes</h4>
+            <p>Follows your system preference automatically, or set it manually. Five accent colors to personalize.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#x1F193;</div>
+            <h4>Free to Use</h4>
+            <p>Fully featured at no cost. Supported by a small banner ad — no paywalls, no feature locks, ever.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder for future apps: copy the pattern above -->
+
+    </div>
+  </section>
+
+  <!-- PRIVACY STRIP -->
+  <section class="privacy-strip">
+    <h2>Your Data Stays <span>Yours</span></h2>
+    <p>Our apps are built on a simple principle: your data is none of our business. We never collect it, store it, or transmit it.</p>
+    <div class="privacy-icons">
+      <div class="privacy-item"><span class="icon">&#x1F6AB;</span><span>No Cloud Storage</span></div>
+      <div class="privacy-item"><span class="icon">&#x1F6AB;</span><span>No Account Needed</span></div>
+      <div class="privacy-item"><span class="icon">&#x1F6AB;</span><span>No Data Selling</span></div>
+      <div class="privacy-item"><span class="icon">&#x2705;</span><span>100% On-Device</span></div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="download-section" id="download">
+    <h2>Ready to take control of your budget?</h2>
+    <p>Free download on the Google Play Store — no strings attached.</p>
+    <a href="#" class="store-btn">
+      <span class="store-icon">&#x25B6;</span>
+      <span>
+        <span class="store-text-small">GET IT ON</span>
+        <span class="store-text-big">Google Play</span>
+      </span>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 <strong>Biscuits Technology LLC</strong> &mdash; All rights reserved.</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:contact@biscuitstechnology.com">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    function selectApp(card) {
+      // Deactivate all cards and hide all panels
+      document.querySelectorAll('.app-card').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.app-detail').forEach(d => d.classList.remove('visible'));
+
+      // Activate clicked card and matching panel
+      card.classList.add('active');
+      const panelId = 'detail-' + card.dataset.app;
+      const panel = document.getElementById(panelId);
+      if (panel) panel.classList.add('visible');
+    }
+  </script>
+
+</body>
+</html>
