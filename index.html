@@ -115,13 +115,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 200px;
       background: var(--white);
-      border-radius: 28px;
+      border-radius: 80px;
       margin-bottom: 28px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-      padding: 12px;
+      padding: 16px;
     }
 
     .hero-logo {
@@ -550,8 +550,7 @@
       <h1>Smart Apps.<br><span>Simple Lives.</span></h1>
       <p class="tagline">We build lightweight, privacy-first mobile apps that work for you — no accounts, no subscriptions, no nonsense.</p>
       <div class="hero-cta-row">
-        <a href="#apps" class="btn-primary">&#x2193; See Our Apps</a>
-        <a href="#download" class="btn-secondary">&#x1F4E5; Download Now</a>
+        <a href="#download" class="btn-primary">&#x1F4E5; Download Now</a>
       </div>
     </div>
   </section>
@@ -565,7 +564,7 @@
       <!-- App selector cards -->
       <div class="app-selector">
 
-        <div class="app-card active" data-app="budget-ledger" onclick="selectApp(this)">
+        <div class="app-card" data-app="budget-ledger" onclick="selectApp(this)">
           <div class="app-card-icon">&#x1F4B0;</div>
           <div class="app-card-info">
             <div class="app-card-name">Budget Ledger Lite</div>
@@ -579,7 +578,7 @@
       </div>
 
       <!-- Detail panels (one per app) -->
-      <div class="app-detail visible" id="detail-budget-ledger">
+      <div class="app-detail" id="detail-budget-ledger">
         <div class="detail-header">
           <div class="detail-icon">&#x1F4B0;</div>
           <div class="detail-info">
@@ -696,15 +695,18 @@
 
   <script>
     function selectApp(card) {
-      // Deactivate all cards and hide all panels
+      const isAlreadyOpen = card.classList.contains('active');
+
+      // Collapse everything
       document.querySelectorAll('.app-card').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.app-detail').forEach(d => d.classList.remove('visible'));
 
-      // Activate clicked card and matching panel
-      card.classList.add('active');
-      const panelId = 'detail-' + card.dataset.app;
-      const panel = document.getElementById(panelId);
-      if (panel) panel.classList.add('visible');
+      // If it wasn't already open, open it
+      if (!isAlreadyOpen) {
+        card.classList.add('active');
+        const panel = document.getElementById('detail-' + card.dataset.app);
+        if (panel) panel.classList.add('visible');
+      }
     }
   </script>
 
