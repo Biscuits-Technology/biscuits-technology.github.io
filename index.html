@@ -381,6 +381,86 @@
       line-height: 1.55;
     }
 
+    /* ── APP SCREENSHOT CAROUSEL (inside app detail) ── */
+    .app-carousel {
+      background: linear-gradient(160deg, #FFF8EE 0%, #FDE8C0 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 34px 0 22px;
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+
+    .carousel-viewport { overflow: hidden; }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .phone {
+      width: 188px;
+      background: #0b0b0b;
+      border-radius: 30px;
+      padding: 7px;
+      box-shadow: 0 18px 40px rgba(43,21,0,0.28);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .phone img {
+      width: 100%;
+      display: block;
+      border-radius: 24px;
+    }
+
+    .carousel-cap {
+      margin-top: 18px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+      text-align: center;
+    }
+
+    .carousel-cap span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .carousel-dots .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s, width 0.2s;
+    }
+
+    .carousel-dots .dot.active {
+      background: var(--orange);
+      width: 22px;
+      border-radius: 4px;
+    }
+
     /* ── APP DETAIL PANEL ── */
     .app-detail {
       display: none;
@@ -694,6 +774,40 @@
 
       <!-- Detail panels (one per app) -->
       <div class="app-detail" id="detail-budget-ledger">
+        <div class="app-carousel">
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="blCarousel">
+              <div class="carousel-slide">
+                <div class="phone"><img src="app-screens/calendar.png" alt="Budget Ledger Lite calendar view" /></div>
+                <div class="carousel-cap">Your month at a glance<span>Tap any day to log it</span></div>
+              </div>
+              <div class="carousel-slide">
+                <div class="phone"><img src="app-screens/new-entry.png" alt="Logging a new transaction" /></div>
+                <div class="carousel-cap">Log it in seconds<span>Spent or earned, done</span></div>
+              </div>
+              <div class="carousel-slide">
+                <div class="phone"><img src="app-screens/date-picker.png" alt="Picking a date" /></div>
+                <div class="carousel-cap">Set any date, fast<span>One-off or recurring</span></div>
+              </div>
+              <div class="carousel-slide">
+                <div class="phone"><img src="app-screens/settings.png" alt="Theme and accent settings" /></div>
+                <div class="carousel-cap">Make it yours<span>Five accents, dark or light</span></div>
+              </div>
+              <div class="carousel-slide">
+                <div class="phone"><img src="app-screens/backup.png" alt="Backup and restore settings" /></div>
+                <div class="carousel-cap">Your data, your file<span>Export, restore, or wipe</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-dots" id="blDots">
+            <button class="dot active" type="button" aria-label="Slide 1"></button>
+            <button class="dot" type="button" aria-label="Slide 2"></button>
+            <button class="dot" type="button" aria-label="Slide 3"></button>
+            <button class="dot" type="button" aria-label="Slide 4"></button>
+            <button class="dot" type="button" aria-label="Slide 5"></button>
+          </div>
+        </div>
+
         <div class="detail-header">
           <div class="detail-icon">&#x1F4B0;</div>
           <div class="detail-info">
@@ -779,7 +893,7 @@
             <h3>More Coming Soon <span class="badge soon">In the Oven</span></h3>
             <p>Budget Ledger Lite is just the first batch. We're a small shop building a family of lightweight, privacy-first apps that follow the same rules — no accounts, no subscriptions, no nonsense. More is on the way.</p>
             <div class="detail-actions">
-              <a href="/cdn-cgi/l/email-protection#01626e6f75606275416368726274687572756462696f6e6d6e66782f626e6c3e7274636b6462753c4f6e756867782433316c6424333160636e74752433316f6476243331436872627468757224333160717172" class="btn-store">&#x1F4E7; Get Notified</a>
+              <a href="mailto:contact@biscuitstechnology.com?subject=Notify%20me%20about%20new%20Biscuits%20apps" class="btn-store">&#x1F4E7; Get Notified</a>
             </div>
           </div>
         </div>
@@ -831,7 +945,7 @@
   <section class="download-section" id="updates">
     <h2>More good things are in the oven.</h2>
     <p>We ship privacy-first apps one at a time, and we're just getting started. Want to know when the next one lands?</p>
-    <a href="/cdn-cgi/l/email-protection#a3c0cccdd7c2c0d7e3c1cad0c0d6cad7d0d7c6c0cbcdcccfccc4da8dc0ccce9cd0d6c1c9c6c0d79eedccd7cac5da869193cec6869193c2c1ccd6d7869193cdc6d4869193e1cad0c0d6cad7d0869193c2d3d3d0" class="btn-primary">&#x1F4E7; Get Notified</a>
+    <a href="mailto:contact@biscuitstechnology.com?subject=Notify%20me%20about%20new%20Biscuits%20apps" class="btn-primary">&#x1F4E7; Get Notified</a>
   </section>
 
   <!-- FOOTER -->
@@ -840,11 +954,39 @@
     <div class="footer-links">
       <a href="https://biscuits-technology.github.io/biscuits-technology-legal/privacy-policy.html" target="_blank">Privacy Policy</a>
       <a href="https://biscuits-technology.github.io/biscuits-technology-legal/terms-of-service.html" target="_blank">Terms of Service</a>
-      <a href="/cdn-cgi/l/email-protection#82e1edecf6e3e1f6c2e0ebf1e1f7ebf6f1f6e7e1eaecedeeede5fbace1edef">Contact</a>
+      <a href="mailto:contact@biscuitstechnology.com">Contact</a>
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
+    // Auto-playing screenshot carousel inside the Budget Ledger Lite panel
+    (function () {
+      var track = document.getElementById('blCarousel');
+      var dotsWrap = document.getElementById('blDots');
+      if (!track || !dotsWrap) return;
+      var dots = dotsWrap.querySelectorAll('.dot');
+      var count = track.children.length;
+      var i = 0;
+      var timer;
+
+      function go(n) {
+        i = (n + count) % count;
+        track.style.transform = 'translateX(' + (-i * 100) + '%)';
+        for (var k = 0; k < dots.length; k++) {
+          dots[k].classList.toggle('active', k === i);
+        }
+      }
+      function start() { timer = setInterval(function () { go(i + 1); }, 3500); }
+      function reset() { clearInterval(timer); start(); }
+
+      for (var k = 0; k < dots.length; k++) {
+        (function (k) {
+          dots[k].addEventListener('click', function () { go(k); reset(); });
+        })(k);
+      }
+      start();
+    })();
+
     function comingSoon(e) {
       if (e) e.preventDefault();
       alert("🍪 Budget Ledger Lite isn't on the Play Store quite yet — it's still in the oven. Check back soon!");
