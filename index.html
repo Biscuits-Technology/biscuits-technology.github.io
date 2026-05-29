@@ -3,7 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biscuits Technology LLC</title>
+  <title>Biscuits Technology — Smart Apps. Simple Lives.</title>
+  <meta name="description" content="Biscuits Technology builds lightweight, privacy-first mobile apps — no accounts, no subscriptions, no nonsense. Your data stays on your device." />
+  <meta name="theme-color" content="#2B1500" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Biscuits Technology — Smart Apps. Simple Lives." />
+  <meta property="og:description" content="Lightweight, privacy-first mobile apps — no accounts, no subscriptions, no nonsense. Your data stays on your device." />
+  <meta property="og:image" content="https://biscuits-technology.github.io/logo.png" />
+  <meta property="og:url" content="https://biscuits-technology.github.io/" />
+  <meta property="og:site_name" content="Biscuits Technology" />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Biscuits Technology — Smart Apps. Simple Lives." />
+  <meta name="twitter:description" content="Lightweight, privacy-first mobile apps — no accounts, no subscriptions, no nonsense." />
+  <meta name="twitter:image" content="https://biscuits-technology.github.io/logo.png" />
+
   <style>
     :root {
       --brown-dark:  #2B1500;
@@ -54,9 +73,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #FFF8EE;
-      border-radius: 10px;
-      padding: 4px;
     }
 
     .nav-logo-wrap img {
@@ -279,6 +295,92 @@
 
     .app-card.active .app-card-chevron { color: var(--orange); }
 
+    /* Coming-soon variant — dashed, clearly a placeholder not a live app */
+    .app-card.coming-soon {
+      border-style: dashed;
+      background: transparent;
+    }
+
+    .app-card.coming-soon:hover {
+      border-color: var(--orange);
+      background: rgba(232,134,10,0.1);
+    }
+
+    .app-card.coming-soon.active {
+      border-color: var(--orange);
+      background: rgba(232,134,10,0.1);
+    }
+
+    .app-card.coming-soon .app-card-icon {
+      background: #FDE8C0;
+    }
+
+    .app-card.coming-soon .app-card-platform { color: var(--text-muted); }
+
+    /* ── OUR APPROACH ── */
+    .approach-section {
+      background: var(--white);
+      padding: 80px 2rem;
+    }
+
+    .approach-section .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .approach-section h2 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+      margin-bottom: 8px;
+    }
+
+    .approach-section .section-sub {
+      color: var(--text-muted);
+      margin-bottom: 44px;
+      font-size: 1rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      text-align: left;
+    }
+
+    .approach-item {
+      padding: 4px;
+    }
+
+    .approach-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--brown-dark);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      margin-bottom: 16px;
+    }
+
+    .approach-item h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+      margin-bottom: 6px;
+    }
+
+    .approach-item p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
     /* ── APP DETAIL PANEL ── */
     .app-detail {
       display: none;
@@ -316,6 +418,8 @@
       flex-shrink: 0;
     }
 
+    .detail-icon.soon { background: #FDE8C0; }
+
     .detail-info h3 {
       font-size: 1.5rem;
       font-weight: 800;
@@ -335,6 +439,8 @@
       margin-left: 10px;
       vertical-align: middle;
     }
+
+    .badge.soon { background: var(--brown-mid); }
 
     .detail-info p {
       margin-top: 8px;
@@ -365,6 +471,9 @@
     }
 
     .btn-store:hover { background: var(--brown-mid); }
+
+    /* Google Play 4-colour mark */
+    .gp-mark { width: 1.05em; height: 1.05em; flex-shrink: 0; display: inline-block; }
 
     /* ── FEATURES GRID ── */
     .features-grid {
@@ -483,7 +592,7 @@
 
     .store-btn .store-text-small { font-size: 0.7rem; opacity: 0.8; display: block; }
     .store-btn .store-text-big  { font-size: 1.1rem; font-weight: 700; display: block; }
-    .store-btn .store-icon      { font-size: 2rem; }
+    .store-btn .gp-mark         { width: 2rem; height: 2rem; }
 
     /* ── FOOTER ── */
     footer {
@@ -520,6 +629,11 @@
     }
   </style>
 </head>
+<template id="__bundler_thumbnail">
+  <div style="width:100%;height:100%;background:linear-gradient(160deg,#FFF8EE 0%,#FDE8C0 60%,#F5C97A 100%);display:flex;align-items:center;justify-content:center;">
+    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13vw;font-weight:800;color:#2B1500;letter-spacing:-0.02em;">B<span style="color:#E8860A;">T</span></div>
+  </div>
+</template>
 <body>
 
   <!-- NAV -->
@@ -542,7 +656,7 @@
       <h1>Smart Apps.<br><span>Simple Lives.</span></h1>
       <p class="tagline">We build lightweight, privacy-first mobile apps that work for you — no accounts, no subscriptions, no nonsense.</p>
       <div class="hero-cta-row">
-        <a href="#download" class="btn-primary">&#x1F4E5; Download Now</a>
+        <a href="#apps" class="btn-primary">&#x1F36A; Explore Our Apps</a>
       </div>
     </div>
   </section>
@@ -565,6 +679,15 @@
           <span class="app-card-chevron">&#x25BC;</span>
         </div>
 
+        <div class="app-card coming-soon" data-app="coming-soon" onclick="selectApp(this)">
+          <div class="app-card-icon">&#x1F36A;</div>
+          <div class="app-card-info">
+            <div class="app-card-name">More Coming Soon</div>
+            <div class="app-card-platform">In the Oven</div>
+          </div>
+          <span class="app-card-chevron">&#x25BC;</span>
+        </div>
+
         <!-- Add more app cards here as you release more apps -->
 
       </div>
@@ -577,7 +700,7 @@
             <h3>Budget Ledger Lite <span class="badge">Android</span></h3>
             <p>A local-first personal finance tracker that keeps your money — and your data — exactly where it belongs: on your device.</p>
             <div class="detail-actions">
-              <a href="#" class="btn-store">&#x25B6; Google Play</a>
+              <a href="#" onclick="comingSoon(event)" class="btn-store"><svg class="gp-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="3,3 3,12 10.5,12" fill="#00A0FF"/><polygon points="3,12 3,21 10.5,12" fill="#00D959"/><polygon points="3,3 21,12 10.5,12" fill="#EA4335"/><polygon points="3,21 21,12 10.5,12" fill="#FFC400"/></svg> Google Play</a>
               <a href="https://biscuits-technology.github.io/biscuits-technology-legal/budget-ledger-lite-privacy-policy.html" target="_blank" class="btn-store" style="background:var(--brown-mid)">&#x1F4C4; Privacy Policy</a>
               <a href="https://biscuits-technology.github.io/biscuits-technology-legal/budget-ledger-lite-terms-of-service.html" target="_blank" class="btn-store" style="background:var(--brown-mid)">&#x1F4C4; Terms of Service</a>
             </div>
@@ -648,8 +771,47 @@
         </div>
       </div>
 
+      <!-- More Coming Soon panel -->
+      <div class="app-detail" id="detail-coming-soon">
+        <div class="detail-header" style="margin-bottom:0">
+          <div class="detail-icon soon">&#x1F36A;</div>
+          <div class="detail-info">
+            <h3>More Coming Soon <span class="badge soon">In the Oven</span></h3>
+            <p>Budget Ledger Lite is just the first batch. We're a small shop building a family of lightweight, privacy-first apps that follow the same rules — no accounts, no subscriptions, no nonsense. More is on the way.</p>
+            <div class="detail-actions">
+              <a href="/cdn-cgi/l/email-protection#01626e6f75606275416368726274687572756462696f6e6d6e66782f626e6c3e7274636b6462753c4f6e756867782433316c6424333160636e74752433316f6476243331436872627468757224333160717172" class="btn-store">&#x1F4E7; Get Notified</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Placeholder for future apps: copy the pattern above -->
 
+    </div>
+  </section>
+
+  <!-- OUR APPROACH -->
+  <section class="approach-section" id="approach">
+    <div class="section-inner">
+      <h2>How We Build</h2>
+      <p class="section-sub">Biscuits Technology is a small shop making lightweight mobile apps the way software used to be — useful, honest, and entirely yours.</p>
+      <div class="approach-grid">
+        <div class="approach-item">
+          <div class="approach-icon">&#x1F512;</div>
+          <h3>Privacy by Default</h3>
+          <p>Your data stays on your device. We don't run servers to collect it, we don't want it, and we never sell it. That's the whole point.</p>
+        </div>
+        <div class="approach-item">
+          <div class="approach-icon">&#x2702;&#xFE0F;</div>
+          <h3>No Nonsense</h3>
+          <p>No accounts to create, no subscriptions to cancel, no dark patterns. Our apps are free and do exactly what they say on the tin.</p>
+        </div>
+        <div class="approach-item">
+          <div class="approach-icon">&#x1F6E0;&#xFE0F;</div>
+          <h3>Built With Care</h3>
+          <p>We sweat the small details and ship apps we'd actually want to use ourselves — then keep improving them, one release at a time.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -665,17 +827,11 @@
     </div>
   </section>
 
-  <!-- DOWNLOAD -->
-  <section class="download-section" id="download">
-    <h2>Ready to take control of your budget?</h2>
-    <p>Free download on the Google Play Store — no strings attached.</p>
-    <a href="#" class="store-btn">
-      <span class="store-icon">&#x25B6;</span>
-      <span>
-        <span class="store-text-small">GET IT ON</span>
-        <span class="store-text-big">Google Play</span>
-      </span>
-    </a>
+  <!-- STAY IN THE LOOP -->
+  <section class="download-section" id="updates">
+    <h2>More good things are in the oven.</h2>
+    <p>We ship privacy-first apps one at a time, and we're just getting started. Want to know when the next one lands?</p>
+    <a href="/cdn-cgi/l/email-protection#a3c0cccdd7c2c0d7e3c1cad0c0d6cad7d0d7c6c0cbcdcccfccc4da8dc0ccce9cd0d6c1c9c6c0d79eedccd7cac5da869193cec6869193c2c1ccd6d7869193cdc6d4869193e1cad0c0d6cad7d0869193c2d3d3d0" class="btn-primary">&#x1F4E7; Get Notified</a>
   </section>
 
   <!-- FOOTER -->
@@ -684,11 +840,16 @@
     <div class="footer-links">
       <a href="https://biscuits-technology.github.io/biscuits-technology-legal/privacy-policy.html" target="_blank">Privacy Policy</a>
       <a href="https://biscuits-technology.github.io/biscuits-technology-legal/terms-of-service.html" target="_blank">Terms of Service</a>
-      <a href="mailto:contact@biscuitstechnology.com">Contact</a>
+      <a href="/cdn-cgi/l/email-protection#82e1edecf6e3e1f6c2e0ebf1e1f7ebf6f1f6e7e1eaecedeeede5fbace1edef">Contact</a>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function comingSoon(e) {
+      if (e) e.preventDefault();
+      alert("🍪 Budget Ledger Lite isn't on the Play Store quite yet — it's still in the oven. Check back soon!");
+    }
+
     function selectApp(card) {
       const isAlreadyOpen = card.classList.contains('active');
 
