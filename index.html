@@ -461,97 +461,6 @@
       border-radius: 4px;
     }
 
-    /* ── THEME TOGGLE ── */
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .theme-toggle {
-      background: rgba(255,255,255,0.1);
-      border: 0;
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      font-size: 1rem;
-      line-height: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .theme-toggle:hover { background: rgba(255,255,255,0.2); transform: translateY(-1px); }
-    .theme-toggle:active { transform: translateY(0); }
-
-    /* ── DARK MODE ── */
-    [data-theme="dark"] {
-      --text-muted: #B59B7F;
-      --border: #3C2C1C;
-    }
-
-    [data-theme="dark"] body { background: #14100B; color: #F2E7D6; }
-
-    [data-theme="dark"] nav,
-    [data-theme="dark"] .privacy-strip,
-    [data-theme="dark"] footer { background: #0E0A06; }
-
-    [data-theme="dark"] .hero {
-      background: linear-gradient(160deg, #2C1C0E 0%, #1A1209 55%, #0D0805 100%);
-      color: #F2E7D6;
-    }
-    [data-theme="dark"] .hero::before {
-      background: radial-gradient(ellipse at 30% 60%, rgba(232,134,10,0.18) 0%, transparent 70%);
-    }
-    [data-theme="dark"] .hero h1 { color: #F7ECDB; }
-
-    [data-theme="dark"] .apps-section { background: #1B140D; }
-    [data-theme="dark"] .apps-section h2.section-title { color: #F7ECDB; }
-
-    [data-theme="dark"] .app-card { background: #241B12; }
-    [data-theme="dark"] .app-card.active { background: #2E2114; }
-    [data-theme="dark"] .app-card-name { color: #F7ECDB; }
-    [data-theme="dark"] .app-card-icon,
-    [data-theme="dark"] .detail-icon,
-    [data-theme="dark"] .approach-icon,
-    [data-theme="dark"] .app-card.coming-soon .app-card-icon { background: #38271A; }
-
-    [data-theme="dark"] .app-detail { background: #1B140D; }
-    [data-theme="dark"] .detail-info h3 { color: #F7ECDB; }
-
-    [data-theme="dark"] .app-carousel {
-      background: linear-gradient(160deg, #241A11 0%, #1A130C 100%);
-    }
-    [data-theme="dark"] .carousel-cap { color: #F7ECDB; }
-
-    [data-theme="dark"] .feature-card { background: #241B12; }
-    [data-theme="dark"] .feature-card h4 { color: #F7ECDB; }
-
-    [data-theme="dark"] .approach-section { background: #14100B; }
-    [data-theme="dark"] .approach-section h2,
-    [data-theme="dark"] .approach-item h3 { color: #F7ECDB; }
-
-    [data-theme="dark"] .download-section { background: #14100B; }
-    [data-theme="dark"] .download-section h2 { color: #F7ECDB; }
-
-    [data-theme="dark"] .btn-secondary { color: #F2E7D6; border-color: #5A4836; }
-
-    [data-theme="dark"] .nav-logo-wrap {
-      background: #FFF8EE;
-      border-radius: 9px;
-      padding: 4px;
-    }
-    [data-theme="dark"] .hero-logo-wrap {
-      display: inline-block;
-      background: #FFF8EE;
-      border-radius: 26px;
-      padding: 20px 30px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
-    }
-    [data-theme="dark"] .hero-logo { filter: none; }
-
     /* ── APP DETAIL PANEL ── */
     .app-detail {
       display: none;
@@ -799,16 +708,6 @@
       .app-detail { padding: 24px 18px; }
     }
   </style>
-  <script>
-    // Apply saved/preferred theme before paint to avoid a flash
-    (function () {
-      try {
-        var s = localStorage.getItem('bt-theme');
-        var dark = s ? s === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        if (dark) document.documentElement.setAttribute('data-theme', 'dark');
-      } catch (e) {}
-    })();
-  </script>
 </head>
 <template id="__bundler_thumbnail">
   <div style="width:100%;height:100%;background:linear-gradient(160deg,#FFF8EE 0%,#FDE8C0 60%,#F5C97A 100%);display:flex;align-items:center;justify-content:center;">
@@ -820,15 +719,9 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
-      <div class="nav-logo-wrap">
-        <img src="logo.png" alt="Biscuits Technology logo" />
-      </div>
       <span class="nav-brand">Biscuits <span>Technology</span></span>
     </a>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">&#x1F319;</button>
-      <a href="#apps" class="nav-cta">Our Apps</a>
-    </div>
+    <a href="#apps" class="nav-cta">Our Apps</a>
   </nav>
 
   <!-- HERO -->
@@ -919,8 +812,8 @@
             <p>A local-first personal finance tracker that keeps your money — and your data — exactly where it belongs: on your device.</p>
             <div class="detail-actions">
               <a href="#" onclick="comingSoon(event)" class="btn-store"><svg class="gp-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="3,3 3,12 10.5,12" fill="#00A0FF"/><polygon points="3,12 3,21 10.5,12" fill="#00D959"/><polygon points="3,3 21,12 10.5,12" fill="#EA4335"/><polygon points="3,21 21,12 10.5,12" fill="#FFC400"/></svg> Google Play</a>
-              <a href="https://biscuits-technology.github.io/biscuits-technology-legal/budget-ledger-lite-privacy-policy.html" target="_blank" class="btn-store" style="background:var(--brown-mid)">&#x1F4C4; Privacy Policy</a>
-              <a href="https://biscuits-technology.github.io/biscuits-technology-legal/budget-ledger-lite-terms-of-service.html" target="_blank" class="btn-store" style="background:var(--brown-mid)">&#x1F4C4; Terms of Service</a>
+              <a href="privacy.html" class="btn-store" style="background:var(--brown-mid)">&#x1F4C4; Privacy Policy</a>
+              <a href="tos.html" class="btn-store" style="background:var(--brown-mid)">&#x1F4C4; Terms of Service</a>
             </div>
           </div>
         </div>
@@ -997,7 +890,7 @@
             <h3>More Coming Soon <span class="badge soon">In the Oven</span></h3>
             <p>Budget Ledger Lite is just the first batch. We're a small shop building a family of lightweight, privacy-first apps that follow the same rules — no accounts, no subscriptions, no nonsense. More is on the way.</p>
             <div class="detail-actions">
-              <a href="mailto:contact@biscuitstechnology.com?subject=Notify%20me%20about%20new%20Biscuits%20apps" class="btn-store">&#x1F4E7; Get Notified</a>
+              <a href="mailto:info@biscuitstechnology.com?subject=Notify%20me%20about%20new%20Biscuits%20apps" class="btn-store">&#x1F4E7; Get Notified</a>
             </div>
           </div>
         </div>
@@ -1049,16 +942,16 @@
   <section class="download-section" id="updates">
     <h2>More good things are in the oven.</h2>
     <p>We ship privacy-first apps one at a time, and we're just getting started. Want to know when the next one lands?</p>
-    <a href="mailto:contact@biscuitstechnology.com?subject=Notify%20me%20about%20new%20Biscuits%20apps" class="btn-primary">&#x1F4E7; Get Notified</a>
+    <a href="mailto:info@biscuitstechnology.com?subject=Notify%20me%20about%20new%20Biscuits%20apps" class="btn-primary">&#x1F4E7; Get Notified</a>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <p>&copy; 2026 <strong>Biscuits Technology LLC</strong> &mdash; All rights reserved.</p>
     <div class="footer-links">
-      <a href="https://biscuits-technology.github.io/biscuits-technology-legal/privacy-policy.html" target="_blank">Privacy Policy</a>
-      <a href="https://biscuits-technology.github.io/biscuits-technology-legal/terms-of-service.html" target="_blank">Terms of Service</a>
-      <a href="mailto:contact@biscuitstechnology.com">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="tos.html">Terms of Service</a>
+      <a href="mailto:info@biscuitstechnology.com">Contact</a>
     </div>
   </footer>
 
@@ -1112,24 +1005,5 @@
     }
   </script>
 
-  <script>
-    // Dark / light theme toggle
-    (function () {
-      var root = document.documentElement;
-      var toggle = document.getElementById('themeToggle');
-      if (!toggle) return;
-      function sync() {
-        toggle.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
-      }
-      sync();
-      toggle.addEventListener('click', function () {
-        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        if (next === 'dark') root.setAttribute('data-theme', 'dark');
-        else root.removeAttribute('data-theme');
-        try { localStorage.setItem('bt-theme', next); } catch (e) {}
-        sync();
-      });
-    })();
-  </script>
 </body>
 </html>
